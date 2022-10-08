@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'mailru.nastasia-chernega'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation (
+    'org.junit.jupiter:junit-jupiter:5.9.1',
+    'com.codeborne:selenide:6.7.4'
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
