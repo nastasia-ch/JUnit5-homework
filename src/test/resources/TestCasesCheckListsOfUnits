@@ -1,0 +1,33 @@
+1) Номер
+UnitConverters-3
+
+2) Заголовок
+Проверка наличия единиц измерения в разделе конвертации
+
+3) Приоритет
+High
+
+4) Тестовые данные
+- 1й набор данных:
+раздел конвертации "Length",
+единицы измерения: "Meter","Kilometer","Centimeter","Millimeter",
+"Micrometer","Nanometer","Mile","Yard","Foot","Inch","Light Year",
+- 2й набор данных:
+раздел конвертации "Temperature",
+единицы измерения: "Celsius","Kelvin","Fahrenheit",
+- 3й набор данных:
+раздел конвертации "Area",
+единицы измерения: "Square Meter","Square Kilometer",
+"Square Centimeter","Square Millimeter","Square Micrometer","Hectare",
+"Square Mile","Square Yard","Square Foot","Square Inch","Acre"
+
+5) Предусловия
+- открыть браузер Google Chrome,
+- в браузере открыть страницу "https://www.unitconverters.net/".
+
+6) Шаги:
+- перейти в раздел конвертации (из набора тестовых данных),
+- проверить наличие в этом разделе всех единиц измерения (из набора тестовых данных).
+
+7) Ожидаемый результат
+В разделе конвертации присутствуют все единицы измерения.

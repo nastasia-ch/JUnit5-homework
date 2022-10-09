@@ -2,6 +2,7 @@ package mailru.nastasia;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -19,6 +20,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class UnitConvertersTests {
 
+    @BeforeEach
+        void setUp() {
+        open("https://www.unitconverters.net/");
+        Configuration.holdBrowserOpen = true;
+    }
+
     @ValueSource(strings = {
             "Length",
             "Temperature",
@@ -27,11 +34,9 @@ public class UnitConvertersTests {
             "Weight",
             "Time"
     })
-    @DisplayName("Are there all units converts")
+    @DisplayName("Is there unit converter section on page")
     @ParameterizedTest
-    void areThereAllUnitConverters(String testData) {
-        open("https://www.unitconverters.net/");
-        Configuration.holdBrowserOpen = true;
+    void isThereUnitConverterSectionOnPage(String testData) {
         $("#menu").shouldHave(text(testData));
     }
 
@@ -40,15 +45,13 @@ public class UnitConvertersTests {
             "Temperature,Celsius,Fahrenheit,36,96.8",
             "Volume,Liter,US Gallon,55,14.529469727"
     })
-    @DisplayName("Length convert test")
+    @DisplayName("Check conversion one unit to another")
     @ParameterizedTest
-    void lengthConvertTest(String unitName,
+    void checkConversionOneUnitToAnother(String unitName,
                            String firstUnit,
                            String secondUnit,
                            String value,
                            String result) {
-        open("https://www.unitconverters.net/");
-        Configuration.holdBrowserOpen = true;
         $("#menu").$(byText(unitName)).click();
         $("#calFrom").selectOption(firstUnit);
         $("#calTo").selectOption(secondUnit);
@@ -71,8 +74,6 @@ public class UnitConvertersTests {
     @DisplayName("Check lists of units")
     @ParameterizedTest
     void checkListsOfUnits(String unit, List<String> valuesOfUnit) {
-        open("https://www.unitconverters.net/");
-        Configuration.holdBrowserOpen = true;
         $("#menu").$(byText(unit)).click();
         $("#calFrom").$$("option").
                 shouldHave(CollectionCondition.texts(valuesOfUnit));
